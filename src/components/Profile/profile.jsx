@@ -1,4 +1,4 @@
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 
 export const Profile = ({ username, tag, location, avatar,
   stats: { followers, views, likes }
@@ -8,7 +8,7 @@ export const Profile = ({ username, tag, location, avatar,
   <div className="description">
     <img src={avatar} alt="User avatar" className="avatar"/>
     <p className={username}>Petra Marica</p>
-    <p classNameName={tag}>@pmarica</p>
+    <p className={tag}>@pmarica</p>
     <p className={location}>Salvador, Brasil</p>
   </div>
 
