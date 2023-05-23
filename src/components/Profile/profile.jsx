@@ -1,43 +1,57 @@
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
+import {
+  ProfileWraper,
+  DescriptionWraper,
+  ImgAvatar,
+  DiscriptionText,
+  Socials,
+  SocialsList,
+  FollowersLabel,
+  FollowersQuantity
+} from '../../components/Profile/profile.styled';
 
-export const Profile = ({ username, tag, location, avatar,
-  stats: { followers, views, likes }
+export const Profile = ({
+  username,
+  tag,
+  location,
+  avatar,
+  stats: { followers, views, likes },
 }) => {
   return (
-    <div className="profile">
-  <div className="description">
-    <img src={avatar} alt="User avatar" className="avatar"/>
-    <p className={username}>Petra Marica</p>
-    <p className={tag}>@pmarica</p>
-    <p className={location}>Salvador, Brasil</p>
-  </div>
+    <ProfileWraper>
+      <DescriptionWraper>
+        <ImgAvatar src={avatar} alt="User avatar" />
+        <DiscriptionText> {username} </DiscriptionText>
+        <DiscriptionText> {tag} </DiscriptionText>
+        <DiscriptionText>{location}</DiscriptionText>
+      </DescriptionWraper>
 
-  <ul className="stats">
-    <li>
-      <span className="label">Followers</span>
-      <span className="quantity">{followers}</span>
-    </li>
-    <li>
-      <span className="label">Views</span>
-          <span className="quantity">{views }</span>
-    </li>
-    <li>
-      <span className="label">Likes</span>
-      <span className="quantity">{likes}</span>
-    </li>
-  </ul>
-</div>
+      <Socials>
+        <SocialsList>
+          <FollowersLabel>Followers:</FollowersLabel>
+          <FollowersQuantity>{followers}</FollowersQuantity>
+        </SocialsList>
+        <SocialsList>
+          <FollowersLabel>Views:</FollowersLabel>
+          <FollowersQuantity>{views}</FollowersQuantity>
+        </SocialsList>
+        <SocialsList>
+          <FollowersLabel>Likes:</FollowersLabel>
+          <FollowersQuantity>{likes}</FollowersQuantity>
+        </SocialsList>
+      </Socials>
+    </ProfileWraper>
   );
 };
 
-// UserItem.propTypes = {
-//   name: PropTypes.string.isRequired,
-//   username: PropTypes.string.isRequired,
-//   email: PropTypes.string.isRequired,
-//   avatarUrl: PropTypes.string.isRequired,
-//   address: PropTypes.shape({
-//     street: PropTypes.string,
-//     city: PropTypes.string,
-//     geo: PropTypes.objectOf(PropTypes.string),
-//   }),
-// };
+Profile.propTypes = {
+  username: PropTypes.string.isRequired,
+  tag: PropTypes.string.isRequired,
+  location: PropTypes.string.isRequired,
+  avatar: PropTypes.objectOf(PropTypes.string),
+  stats: PropTypes.shape({
+    followers: PropTypes.number.isRequired,
+    views: PropTypes.number.isRequired,
+    likes: PropTypes.number.isRequired,
+  }),
+};

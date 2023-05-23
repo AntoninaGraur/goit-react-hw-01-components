@@ -1,29 +1,34 @@
-import {Profile} from "../../components/Profile/profile";
-import user from "../../components/data/user.json";
+
+import React from 'react';
+
+import { Profile } from '../../components/Profile/profile';
+import user from '../../components/data/user.json';
+
+import Statistics from '../Statistics/statistics';
+import data from '../../components/data/data.json';
 
 
+import FriendList from '../FriendsList/friendList';
+import friends from '../../components/data/friends.json';
+
+import transactions from '../../components/data/transactions.json';
+import TransactionHistory from '../../components/Transactions/transactions';
 
 export const App = () => {
   return (
-    <div
-      style={{
-        height: '100vh',
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-        fontSize: 40,
-        color: '#010101'
-      }}
-    >
-
-      
-<Profile username={user.username}
-  tag={user.tag}
-  location={user.location}
-  avatar={user.avatar}
-      stats={user.stats}
+    <div>
+      <Profile
+        username={user.username}
+        tag={user.tag}
+        location={user.location}
+        avatar={user.avatar}
+        stats={user.stats}
       />
+      <Statistics title="Upload stats" stats={data} />
+      <FriendList friends={friends} />
+      <TransactionHistory items={transactions} />
     </div>
   );
 };
-// username, tag, location, avatar, stats: { folowers, views, likes } 
+
+
